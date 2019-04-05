@@ -16,16 +16,27 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('home.index');
-}); 
+// Route::get('/', function () {
+//     return view('home.index');
+// });
+// Route::get('test', function(){
+// 	return App\User::with('orders')->get();
+// }); 
 
+
+Route::get('/chckout', 'CartController@chckout') ;
+
+
+ Route::get('/', 'HomeController@index'); 
 
 
 /*----- Admin Routes ---*/
 Auth::routes();
 
-Route::get('/admin/login', 'AdminController@index')->name('admin.login');
+Route::match(['get','post'],'/admin', 'AdminController@index')->name('admin.login');
+
+Route::get('admin/logout', 'AdminController@logout');
+
 
 Route::get('/admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
 
@@ -68,6 +79,8 @@ Route::get('/admin/products/{id}/edit', 'ProductController@edit')->name('product
 
 Route::put('/admin/products/{id}', 'ProductController@update')->name('product.update');
 
+Route::delete('/admin/products/{id}/delete', 'ProductController@destroy')->name('product.destroy'); 
+
 
 
 Route::get('/admin/customers', 'CustomerController@index')->name('admin.customer');
@@ -79,11 +92,6 @@ Route::get('/admin/orders', 'OrderController@index')->name('admin.order');
 
 
 /*----- Home Routes ---*/
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/products/carts', 'CartController@index')->name('carts');
-
-Route::get('/products/productdetails', 'ProductDetailsController@index')->name('productdetails');
 
 Route::get('/home/register', 'RegistrationController@create')->name('home.register');
 
@@ -92,7 +100,30 @@ Route::post('/register', 'RegistrationController@store');
 Route::namespace('Auth')->group(function () {
 Route::get('/logout', 'LoginController@logout');
 
-Route::get('/login', 'LoginController@create')->name('home.login');
 
-Route::post('/login', 'LoginController@store')->name('loginstore');
+Route::match(['get','post'],'/login', 'LoginController@index')->name('home.login');
+
+// Route::get('/login', 'LoginController@index')->name('home.login');
+
+// Route::post('/login', 'LoginController@store')->name('loginstore');
 });
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/products/productdetails/{id}', 'ProductDetailsController@viewDetails');
+
+Route::post('/products/cart-add', 'CartController@addTocart')->name('carts');
+
+Route::get('/products/cart-show', 'CartController@cartShow')->name('showcart') ;
+
+Route::get('/products/checkout', 'CartController@checkout')->name('checkout') ;
+
+Route::post('/products/update-cart', 'CartController@updateCart');
+ 
+Route::get('/products/delete-cart-product/{rowId}', 'CartController@removeCartproduct'); 
+
+
+
+
+

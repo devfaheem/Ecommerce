@@ -11,10 +11,10 @@
         <div class="card-body d-sm-flex justify-content-between">
 
           <h4 class="mb-3"><strong>List Users</strong></h4>
-          <h5>
-            <a href="{{ route('admin.customer.create') }}"><button type="button" class="btn btn-primary">Add</button></a>
+          <!-- <h5>
+            <a href="{{ route('admin.customer.create') }}"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Add</button></a>
           </h5>
-
+ -->
         </div> 
         <hr class="mb-0">
     </div>

@@ -107,6 +107,43 @@
           </div>
         </div>
 
+         <div class="mb-3">
+      <select class="custom-select d-block w-100 mt-2" id="size" name="size[]" multiple="multiple" required>
+              <option>-- Add Size --</option> 
+           @foreach ($sizes as $size) 
+          {
+            <option value="{{ $size }}">{{ $size }}</option>
+          }
+          @endforeach  
+            </select> 
+          </div>
+
+
+         <div class="mb-3">
+      <select class="custom-select d-block w-100 mt-2" id="color" name="color[]" multiple="multiple" required>
+              <option>-- Add colors --</option> 
+            
+            @foreach ($colors as $color) 
+          {
+            <option value="{{ $color }}">{{ $color }}</option>
+          }
+          @endforeach 
+
+            </select> 
+          </div>
+
+
+     <div class="mb-3">
+    <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="stock" id="inlineRadio1" value="instock" {{ ($product->stock=='instock') ?  'checked' : '' }}>
+  <label class="form-check-label" for="inlineRadio1">In Stock</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="stock" id="inlineRadio2" value="outofstock" {{ ($product->stock=='outofstock') ?  'checked' : '' }}>
+  <label class="form-check-label" for="inlineRadio2">Out of Stock</label>
+</div>
+    </div>
+
         <label for="username">Product Image</label> <br>
       <input type="file" id="file-with-multi-file"  name="image"><br> 
 

@@ -126,27 +126,27 @@
                   <div class="" style="padding: 5px;">
                     <h3 class="text-center" style="color: #fff"><strong>Admin Login</strong></h3>
                   </div>
-
+                  <div class="form-group">
+                         @include('layouts.errors-and-messages')
+                        </div>
+                    <!-- Login Form -->
+                    <form action="{{ route('admin.login') }}" method="post">
+                        {{ csrf_field() }}
                   <!--Body-->
-                  <div class="md-form">
-                    <i class="fas fa-user prefix white-text"></i>
-                    <input type="text" id="orangeForm-name" class="form-control">
-                    <label for="orangeForm-name">Your name</label>
-                  </div>
+ 
                   <div class="md-form">
                     <i class="fas fa-envelope prefix white-text"></i>
-                    <input type="text" id="orangeForm-email" class="form-control">
-                    <label for="orangeForm-email">Your email</label>
+                    <input type="text" id="orangeForm-email" class="form-control" name="email">
+                    <label for="orangeForm-email">Email</label>
                   </div>
 
                   <div class="md-form">
                     <i class="fas fa-lock prefix white-text"></i>
-                    <input type="password" id="orangeForm-pass" class="form-control">
-                    <label for="orangeForm-pass">Your password</label>
+                    <input type="password" name="password" id="orangeForm-pass" class="form-control">
+                    <label for="orangeForm-pass">password</label>
                   </div>
 
-                  <div class="text-center">
-                    <a href="dashboard.html"><button class="btn blue-gradient btn-lg">Sign In</button></a>
+                  <div class="text-center"> <button class="btn blue-gradient btn-lg">Sign In</button> 
                    <!--  <hr>
                     <div class="inline-ul text-center d-flex justify-content-center">
                       <a class="p-2 m-2 fa-lg tw-ic"><i class="fab fa-twitter white-text"></i></a>
@@ -156,6 +156,7 @@
                   </div> -->
 
                 </div>
+                </form>
               </div>
               <!--/Form with header-->
 

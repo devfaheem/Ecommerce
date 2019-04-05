@@ -17,8 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
-        // $products = Product::all();
+                // $products = Product::all();
         $products = DB::table('products')->join('product_categories', 'product_categories.id', '=', 'products.productcategory_id')->join('brands', 'brands.id', '=', 'products.brand_id')->select('products.*','product_categories.name as productcategory','brands.name as brand')->get()->toArray();
         // echo "<pre>";
         // print_r($products);
@@ -34,9 +33,12 @@ class ProductController extends Controller
     public function create()
     {
         //
+        $colors = config("proud_india.colors");
+        $sizes = config("proud_india.sizes");
+        // dd($colors); 
         $brand = Brand::all();
         $productcategory = ProductCategory::all();
-        return view('admin.products.create',compact('productcategory','brand'));
+        return view('admin.products.create',compact('productcategory','brand','colors','sizes'));
     }
 
     /**
@@ -126,12 +128,24 @@ class ProductController extends Controller
          // $new_name3 = $image3->getClientOriginalExtension();
          // $image3->move(public_path("images"), $new_name3);
 
+
+        $siz = $request->size;
+        $sizes = implode(',', $siz);
+         $data['size'] = $sizes; 
+
+           $col = $request->color;
+        $colors = implode(',', $col);
+         $data['color'] = $colors; 
+
          $data['brand_id'] = $request->brandname;   
          $data['productcategory_id'] = $request->productcategory;
-         $data['image'] = $file; 
-          $data['image1'] = $file1; 
-           $data['image2'] = $file2; 
-            $data['image3'] = $file3; 
+         $data['image'] = $fileName; 
+          $data['image1'] = $fileName1; 
+           $data['image2'] = $fileName2; 
+            $data['image3'] = $fileName3; 
+
+            //dd($data);
+
         Product::create($data);
         return redirect()->route('admin.product')->with('success_msg','Product Category Created Successfully');
     }
@@ -156,6 +170,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         //
+        $colors = config("proud_india.colors");
+        $sizes = config("proud_india.sizes");
+
         $brand = Brand::all();
         $productcategory = ProductCategory::all();
          $product = Product::find($id);
@@ -163,7 +180,7 @@ class ProductController extends Controller
          // print_r($brand);
          // echo "<pre>";
          // exit();
-         return  view('admin.products.edit',compact('product','productcategory','brand'));
+         return  view('admin.products.edit',compact('product','productcategory','brand','sizes','colors'));
     }
 
     /**
@@ -273,5 +290,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+         Product::find($id)->delete();
+         return redirect()->route('admin.product')->with('success_msg','Product Deleted Successfully'); 
     }
 }

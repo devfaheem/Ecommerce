@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
+use DB;
 
 class ProductDetailsController extends Controller
 {
@@ -12,10 +14,16 @@ class ProductDetailsController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function viewDetails(Request $request, $id)
     {
         //
-         return view('home.product_details');
+        $product_id = $request->route('id');
+          
+    $productRows = DB::table('products')->join('product_categories', 'product_categories.id', '=', 'products.productcategory_id')->join('brands', 'brands.id', '=', 'products.brand_id')->select('products.*','product_categories.name as productcategory','brands.name as brand')->where('products.id', '=', $product_id )->get();
+
+
+         // $productRows = Product::findOrFail($id)->toArray();
+         return view('home.product_details',compact('productRows'));
     }
 
     /**

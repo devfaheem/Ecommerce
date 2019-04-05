@@ -27,6 +27,8 @@
     
     <!-- Modernizer JS -->
     <script src="{{ asset('assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+
+
     <style type="text/css">
 
 .carousel-inner .carousel-item-right.active,
@@ -44,49 +46,13 @@
   transform: translateX(0);
 }
 
-
-
-
+ 
 </style>
        
 </head>
 
 <body>
-<div class="container text-center my-3"> 
-    <div class="row mx-auto my-auto">
-        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img class="col-4 img-fluid" src="http://placehold.it/350x180?text=1">
-                </div>
-                <div class="carousel-item">
-                    <img class="col-4 img-fluid" src="http://placehold.it/350x180?text=2">
-                </div>
-                <div class="carousel-item">
-                    <img class="col-4 img-fluid" src="http://placehold.it/350x180?text=3">
-                </div>
-                <div class="carousel-item">
-                    <img class="col-4 img-fluid" src="http://placehold.it/350x180?text=4">
-                </div>
-                <div class="carousel-item">
-                    <img class="col-4 img-fluid" src="http://placehold.it/350x180?text=5">
-                </div>
-                <div class="carousel-item">
-                    <img class="col-4 img-fluid" src="http://placehold.it/350x180?text=6">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div> 
-</div> 
-<!-- Header Section Start -->
+ 
  @include('layouts.home.header_categories')
 
 

@@ -8478,21 +8478,21 @@ img.mfp-img {
       float: left;
       width: 100%;
       margin-bottom: 33px; }
-      .single-product-content .single-product-description .actions .add-to-cart {
+ 
+        .single-product-content .single-product-description .actions .addtocart {
         position: relative;
        /* background-color: #f5d730;*/
-          background-color: #68cad4;
+          background-color: #17a2b8;
         color: #202020;
         border-radius: 50px;
-        display: block;
-        width: 170px;
+        display: block; 
         padding: 10px 25px 10px 56px;
         -webkit-transition: all 0.7s cubic-bezier(0.77, -1.5, 0.12, 3) 0s;
         -o-transition: all 0.7s cubic-bezier(0.77, -1.5, 0.12, 3) 0s;
         transition: all 0.7s cubic-bezier(0.77, -1.5, 0.12, 3) 0s;
         float: left;
         margin-right: 15px; }
-        .single-product-content .single-product-description .actions .add-to-cart i {
+        .single-product-content .single-product-description .actions .addtocart i {
           width: 41px;
           height: 41px;
           background-color: #ffffff;
@@ -8518,12 +8518,7 @@ img.mfp-img {
           line-height: 21px;
           overflow: hidden;
           display: block;
-          text-align: center; }
-        .single-product-content .single-product-description .actions .add-to-cart.added {
-          padding-left: 25px;
-          padding-right: 56px; }
-          .single-product-content .single-product-description .actions .add-to-cart.added i {
-            left: calc(100% - 41px); }
+          text-align: center; } 
       .single-product-content .single-product-description .actions .wishlist-compare {
         float: left; }
         .single-product-content .single-product-description .actions .wishlist-compare a {
@@ -9407,7 +9402,7 @@ img.mfp-img {
         float: right; }
   .cart-summary .cart-summary-button {
     overflow: hidden;
-    width: 100%; }
+    width: 85%; }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .cart-summary .cart-summary-button {
         display: -webkit-box;
@@ -9426,7 +9421,7 @@ img.mfp-img {
         justify-content: flex-start; } }
     .cart-summary .cart-summary-button button {
       margin-top: 10px;
-      width: 140px;
+      /*width: 140px;*/
       border-radius: 50px;
       height: 36px;
       border: 1px solid #999999;

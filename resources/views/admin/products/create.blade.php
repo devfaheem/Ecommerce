@@ -109,22 +109,58 @@
           <div class="invalid-feedback">
             Your Price is required.
           </div>
-        </div>
+        </div> 
+      <!-- Default unchecked -->
 
-        <label for="username">Product Image</label> <br>
-      <input type="file" id="file-with-multi-file"  name="image"><br> 
+      <div class="mb-3">
+      <select class="custom-select d-block w-100 mt-2" id="size" name="size[]" multiple="multiple" required>
+              <option>-- Add Size --</option> 
+           @foreach ($sizes as $size) 
+          {
+            <option value="{{ $size }}">{{ $size }}</option>
+          }
+          @endforeach 
+            </select> 
+          </div>
 
-      <label for="username">Product Image 1</label> <br>
-      <input type="file" id="file-with-multi-file"  name="image1"><br> 
 
-      <label for="username">Product Image 2</label> <br>
-      <input type="file" id="file-with-multi-file"  name="image2"> <br>
+         <div class="mb-3">
+      <select class="custom-select d-block w-100 mt-2" id="color" name="color[]" multiple="multiple" required>
+              <option>-- Add colors --</option> 
+           @foreach ($colors as $color) 
+          {
+            <option value="{{ $color }}">{{ $color }}</option>
+          }
+          @endforeach 
+            </select> 
+          </div>
 
-      <label for="username">Product Image 3</label> <br>
-      <input type="file" id="file-with-multi-file"  name="image3"> 
 
+     <div class="mb-3">
+    <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="stocks" id="inlineRadio1" value="instock" checked="">
+  <label class="form-check-label" for="inlineRadio1">In Stock</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="stocks" id="inlineRadio2" value="outofstock">
+  <label class="form-check-label" for="inlineRadio2">Out of Stock</label>
+</div>
+    </div>
 
+        <label for="username"><strong>Product Image</strong></label> <br>
+      <input type="file" id="file-with-multi-file"  name="image"><br><br> 
+
+      <label for="username"><strong>Product Image 1</strong></label> <br>
+      <input type="file" id="file-with-multi-file"  name="image1"><br><br> 
  
+
+      <label for="username"><strong>Product Image 2</strong></label> <br>
+      <input type="file" id="file-with-multi-file"  name="image2"> <br><br> 
+
+
+      <label for="username"><strong>Product Image 3</strong></label> <br>
+      <input type="file" id="file-with-multi-file"  name="image3"> 
+       
         <hr class="mb-4">
         <button class="my-3 pt-3 btn btn-primary" type="submit">Save</button> 
             <a href="{{ route('admin.product') }}"><button type="button" class="btn btn-primary">Cancel</button></a> 

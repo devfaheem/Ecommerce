@@ -51,7 +51,7 @@
                          @include('layouts.errors-and-messages')
                         </div>
                     <!-- Login Form -->
-                    <form action="{{ route('loginstore') }}" method="post">
+                    <form action="{{ route('home.login') }}" method="post">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-12 mb-30"><input type="email" name="email" id="email" placeholder="Type your email address" required=""></div>

@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Product;
+use App\Order;
+
+use Cart;
 
 use Illuminate\Http\Request;
 
@@ -12,10 +16,28 @@ class CartController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function addTocart(Request $request)
     {
-        //
-         return view('home/cart');
+        //  dd($request->all());
+        $productId = $request->productId;
+    
+        $productById = Product::where('id', $productId)->first();
+
+        Cart::add([
+            'id' => $productId,
+            'name' => $productById->name,
+            'price' => $productById->price,
+            'qty' => $request->quantity,  
+            'options' => [ 
+                'size' => $request->size,
+                'color' => $request->color,
+                'image' => $productById->image  
+            ]
+        ]);
+
+         //dd($data);
+          
+        return redirect('/products/cart-show');
     }
 
     /**
@@ -23,10 +45,14 @@ class CartController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function cartShow()
     {
         //
-        //return view('admin.customers.create');
+        $cartProducts = Cart::content();
+
+       // dd($cartProducts);
+
+        return view('home.cart',['cartProducts'=>$cartProducts]);
     }
 
     /**
@@ -34,9 +60,13 @@ class CartController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function updateCart(Request $request)
     {
         //
+        //dd($request->all());
+        Cart::update($request->rowId, $request->qty);
+
+        return redirect('/products/cart-show')->with('success_msg','Cart updated successfully..!!');
     }
 
     /**
@@ -45,41 +75,29 @@ class CartController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function removeCartproduct($rowId)
     {
         //
+        Cart::remove($rowId);
+
+         return redirect('/products/cart-show')->with('success_msg','Cart product removed successfully..!!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
+    public function checkOut()
     {
         //
+
+        $data = Cart::content();
+
+        //dd($data);
+
+        return view('home.checkout',['data'=>$data]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
+    public function chckout(){
+
+        return Order::createOrder();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+ 
 }

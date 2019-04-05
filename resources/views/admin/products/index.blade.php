@@ -11,7 +11,7 @@
 
           <h4 class="mb-3"><strong>List Products</strong></h4>
           <h5>
-            <a href="{{ route('admin.product.create') }}"><button type="button" class="btn btn-primary">Add</button></a>
+            <a href="{{ route('admin.product.create') }}"><button type="button" class="btn btn-primary"><i class="fa fa-plus"></i> Add</button></a>
           </h5>
 
         </div> 
@@ -57,7 +57,20 @@
       </th>
        <th class="th-sm">Price
       </th>
+      <th class="th-sm">Size
+      </th>
+
+       <th class="th-sm">Color
+      </th>
+       <th class="th-sm">Stocks
+      </th>
        <th class="th-sm">Product Image
+      </th>
+      <th class="th-sm">Product Image 1
+      </th>
+      <th class="th-sm">Product Image 2
+      </th>
+      <th class="th-sm">Product Image 3
       </th>
        <th class="th-sm">Status
       </th>
@@ -77,10 +90,16 @@
         <td>{{ $value->description }}</td>
         <td>{{ $value->quantity }}</td>
         <td>{{ $value->price }}</td>
-        <td><a href='{{ asset("images/$value->image") }}'>{{ $value->image }}</a></td>
+        <td>{{ $value->size }}</td>
+        <td>{{ $value->color }}</td>
+        <td>{{ $value->stocks }}</td>
+        <td><a href='{{ asset("images/$value->image") }}'><img src="{{ asset('images/'.$value->image) }}" width="100px"></a></td>
+        <td><a href='{{ asset("images/$value->image1") }}'><img src="{{ asset('images/'.$value->image1) }}" width="100px"></a></td>
+        <td><a href='{{ asset("images/$value->image2") }}'><img src="{{ asset('images/'.$value->image2) }}" width="100px"></a></td>
+         <td><a href='{{ asset("images/$value->image3") }}'><img src="{{ asset('images/'.$value->image3) }}" width="100px"></a></td>
         <td>{{ $value->status }}</td> 
       <td><a href="{{ route('product.edit',$value->id) }}" class="btn btn-info btn-square"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>&nbsp;&nbsp;&nbsp; 
-        {!! Form::open(['method' => 'DELETE','style'=>'display:inline']) !!}
+        {!! Form::open(['method' => 'DELETE','route' => ['product.destroy', $value->id],'style'=>'display:inline']) !!}
             <button type="submit" class="btn btn-danger btn-square"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Delete</button>
             {!! Form::close() !!}
           </td>

@@ -42,7 +42,9 @@
 <!-- Single Product Section Start -->
 <div class="product-section section mt-90 mb-90">
     <div class="container">
-        
+
+        @foreach( $productRows as $productdet )
+         
         <div class="row mb-90">
                     
             <div class="col-lg-6 col-12 mb-50">
@@ -52,26 +54,26 @@
 
                     <div class="tab-content">
                         <div id="single-image-1" class="tab-pane fade show active big-image-slider">
-                            <div class="big-image"><img src="{{ asset('assets/images/single-product/big-1.png') }}" alt="Big Image"><a href="{{ asset('assets/images/single-product/big-1.png') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
-                            <div class="big-image"><img src="{{ asset('assets/images/single-product/big-2.png') }}" alt="Big Image"><a href="{{ asset('assets/images/single-product/big-2.png') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
-                            <div class="big-image"><img src="{{ asset('assets/images/single-product/big-3.png') }}" alt="Big Image"><a href="{{ asset('assets/images/single-product/big-3.png') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
+                            <div class="big-image"><img src="{{ asset('images/'.$productdet->image) }}" alt="Big Image"><a href="{{ asset('images/'.$productdet->image) }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
+                            <div class="big-image"><img src="{{ asset('images/'.$productdet->image1) }}" alt="Big Image"><a href="{{ asset('images/'.$productdet->image1) }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
+                            <div class="big-image"><img src="{{ asset('images/'.$productdet->image2) }}" alt="Big Image"><a href="{{ asset('images/'.$productdet->image2) }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
                         </div>
                         <div id="single-image-2" class="tab-pane fade big-image-slider">
-                            <div class="big-image"><img src="{{ asset('assets/images/single-product/big-7.png') }}" alt="Big Image"><a href="{{ asset('assets/images/single-product/big-7.png') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
-                            <div class="big-image"><img src="{{ asset('assets/images/single-product/big-8.png') }}" alt="Big Image"><a href="{{ asset('assets/images/single-product/big-9.png') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
-                            <div class="big-image"><img src="{{ asset('assets/images/single-product/big-9.png') }}" alt="Big Image"><a href="{{ asset('assets/images/single-product/big-9.png') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
+                            <div class="big-image"><img src="{{ asset('images/'.$productdet->image3) }}" alt="Big Image"><a href="{{ asset('images/'.$productdet->image3) }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
+                            <div class="big-image"><img src="{{ asset('images/'.$productdet->image) }}" alt="Big Image"><a href="{{ asset('images/'.$productdet->image) }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
+                            <div class="big-image"><img src="{{ asset('images/'.$productdet->image1) }}" alt="Big Image"><a href="{{ asset('images/'.$productdet->image1) }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
                         </div>
                         <div id="single-image-3" class="tab-pane fade big-image-slider">
-                            <div class="big-image"><img src="{{ asset('assets/images/single-product/big-13.png') }}" alt="Big Image"><a href="{{ asset('assets/images/single-product/big-13.png') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
-                            <div class="big-image"><img src="{{ asset('assets/images/single-product/big-14.png') }}" alt="Big Image"><a href="{{ asset('assets/images/single-product/big-14.png') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
-                            <div class="big-image"><img src="{{ asset('assets/images/single-product/big-15.png') }}" alt="Big Image"><a href="{{ asset('assets/images/single-product/big-15.png') }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
+                            <div class="big-image"><img src="{{ asset('images/'.$productdet->image2) }}" alt="Big Image"><a href="{{ asset('images/'.$productdet->image2) }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
+                            <div class="big-image"><img src="{{ asset('images/'.$productdet->image3) }}" alt="Big Image"><a href="{{ asset('images/'.$productdet->image3) }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
+                            <div class="big-image"><img src="{{ asset('images/'.$productdet->image) }}" alt="Big Image"><a href="{{ asset('images/'.$productdet->image) }}" class="big-image-popup"><i class="fa fa-search-plus"></i></a></div>
                         </div>
                     </div>
                     
                     <div class="thumb-image-slider nav" data-vertical="true">
-                        <a class="thumb-image active" data-toggle="tab" href="#single-image-1"><img src="{{ asset('assets/images/single-product/thumb-1.png') }}" alt="Thumbnail Image"></a>
-                        <a class="thumb-image" data-toggle="tab" href="#single-image-2"><img src="{{ asset('assets/images/single-product/thumb-2.png') }}" alt="Thumbnail Image"></a>
-                        <a class="thumb-image" data-toggle="tab" href="#single-image-3"><img src="{{ asset('assets/images/single-product/thumb-3.png') }}" alt="Thumbnail Image"></a>
+                        <a class="thumb-image active" data-toggle="tab" href="#single-image-1"><img src="{{ asset('images/'.$productdet->image) }}" alt="Thumbnail Image"></a>
+                        <a class="thumb-image" data-toggle="tab" href="#single-image-2"><img src="{{ asset('images/'.$productdet->image1) }}" alt="Thumbnail Image"></a>
+                        <a class="thumb-image" data-toggle="tab" href="#single-image-3"><img src="{{ asset('images/'.$productdet->image2) }}" alt="Thumbnail Image"></a>
                     </div>
 
                 </div>
@@ -87,11 +89,11 @@
                     <div class="head-content">
 
                         <div class="category-title">
-                            <a href="#" class="cat">Smartphone</a>
-                            <h5 class="title">Flex 3310</h5>
+                            <!-- <a href="#" class="cat"></a> -->
+                            <h5 class="title">{{$productdet->name}}</h5>
                         </div>
 
-                        <h5 class="price">$295.00</h5>
+                        <h5 class="price"><i class="fa fa-inr" aria-hidden="true"></i> {{$productdet->price}}</h5>
 
                     </div>
 
@@ -106,51 +108,56 @@
                         </div>
 
                         <div class="desc">
-                            <p>enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia res eos qui ratione voluptatem sequi Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora inform </p>
+                            <p>{{ $productdet->description}}</p>
                         </div>
                         
-                        <span class="availability">Availability: <span>In Stock</span></span>
-                        
+                        <span class="availability">Availability: <span>{{ $productdet->stocks}}</span></span>
+                         {!! Form::open(['url' => '/products/cart-add', 'method' =>'POST','enctype'=>'multipart/form-data']) !!}
+
+                         {{ csrf_field() }} 
+
+                            <img src="{{ asset('images/'.$productdet->image) }}" style="display: none" alt="Big Image" name="image">
+
                         <div class="quantity-colors">
                             
                             <div class="quantity">
                                 <h5>Quantity</h5>
-                                <div class="pro-qty"><input type="text" value="1"></div>
+                                <div class="pro-qty"><input type="text" value="1" name="quantity"></div>
                             </div>                            
                             
                             <div class="colors pro-color">
-                                <h5>Color</h5>  
-                                    <a class="color-1" href="#"></a>
-                                    <a class="color-2" href="#"></a>
-                                    <a class="color-3" href="#"></a>
-                                    <a class="color-4" href="#"></a>
-                                    <a class="color-5" href="#"></a>         
+                                <h5>Color</h5>   
+                                    @if ($productdet->color != "")
+                              @foreach(explode(',', $productdet->color) as $color_del) 
+                                 <a style="padding-right: 40px;"><input type="radio" name="color" value="{{ $color_del }}" required="">{{ $color_del }}</a>    
+                                  
+                              @endforeach
+                                @endif 
                             </div>                            
                             
                         </div> 
+                          
 
                         <div class="pro-size">
                                     <h5>Size</h5>
-                                    <a href="#" data-tooltip="XS-32">xs</a>
-                                    <a href="#" data-tooltip="S-34">s</a>
-                                    <a href="#" data-tooltip="M-36">m</a>
-                                    <a href="#" data-tooltip="L-38">l</a>
-                                    <a href="#" data-tooltip="XL-40">xl</a>
-                                    <a href="#" data-tooltip="XXL-42">xxl</a>
+                                    @if ($productdet->size != "")
+                          @foreach(explode(',', $productdet->size) as $size_del) 
+                              <a data-tooltip="XS-32" class="btn btn-default" ><input type="radio" name="size" value="{{ $size_del }}" required="">{{ $size_del }}</a> 
+                          @endforeach
+                        @endif  
+     
+               <input type="hidden" name="productId" value="{{ $productdet->id }}" required="">    
                                 </div><br>
  
                         <div class="actions">
-
-                            <a href="#" class="add-to-cart"><i class="ti-shopping-cart"></i><span>ADD TO CART</span></a>
-
-                            <div class="wishlist-compare">
-                                <a href="#" data-tooltip="Compare"><i class="ti-control-shuffle"></i></a>
-                                <a href="#" data-tooltip="Wishlist"><i class="ti-heart"></i></a>
-                            </div>
+                   
+                            <button class="addtocart" type="submit"><i class="ti-shopping-cart"></i><span>ADD TO CART</span></button>
+ 
 
                         </div>
                         
-                        <div class="tags">
+                            {!! Form::close() !!}
+                       <!--  <div class="tags">
                             
                             <h5>Tags:</h5>
                             <a href="#">Electronic</a>
@@ -159,8 +166,7 @@
                             <a href="#">Charger</a>
                             <a href="#">Powerbank</a>
                             
-                        </div>
-                        
+                        </div>                         
                         <div class="share">
                             
                             <h5>Share: </h5>
@@ -169,7 +175,7 @@
                             <a href="#"><i class="fa fa-instagram"></i></a>
                             <a href="#"><i class="fa fa-google-plus"></i></a>
                             
-                        </div>
+                        </div>-->
 
                     </div>
 
@@ -178,7 +184,7 @@
             </div>
             
         </div>
-        
+       <!--  
         <div class="row">
             
             <div class="col-lg-10 col-12 ml-auto mr-auto">
@@ -355,9 +361,9 @@
                 
             </div>
             
-        </div>
-        
-    </div>
+        </div> -->
+        @endforeach
+    </div><!-- container --->
 </div><!-- Single Product Section End -->
 
 <!-- Related Product Section Start -->
@@ -631,22 +637,21 @@
 
 
 <!-- Brands Section Start -->
-<div class="brands-section section mb-90">
+<!-- <div class="brands-section section mb-90">
     <div class="container">
         <div class="row">
-            
-            <!-- Brand Slider Start -->
+             
             <div class="brand-slider col">
                 <div class="brand-item col"><img src="{{ asset('assets/images/brands/brand-1.png') }}" alt="Brands"></div>
                 <div class="brand-item col"><img src="{{ asset('assets/images/brands/brand-2.png') }}" alt="Brands"></div>
                 <div class="brand-item col"><img src="{{ asset('assets/images/brands/brand-3.png') }}" alt="Brands"></div>
                 <div class="brand-item col"><img src="{{ asset('assets/images/brands/brand-4.png') }}" alt="Brands"></div>
                 <div class="brand-item col"><img src="{{ asset('assets/images/brands/brand-5.png') }}" alt="Brands"></div>
-            </div><!-- Brand Slider End -->
+            </div> 
             
         </div>
     </div>
-</div><!-- Brands Section End -->
+</div> --><!-- Brands Section End -->
 
 
 <!-- Footer Section Start -->

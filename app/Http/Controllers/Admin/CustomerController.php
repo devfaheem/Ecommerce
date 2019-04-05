@@ -15,6 +15,9 @@ class CustomerController extends Controller
     public function index()
     {
         //
+
+        // $sections = config("proud_india.sections");
+        // dd($sections);
          return view('admin.customers.index');
     }
 

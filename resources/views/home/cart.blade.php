@@ -14,8 +14,7 @@
         <!-- Page Banner -->
         <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
             <div class="page-banner">
-                <h1>Cart</h1>
-                <p>similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita</p>
+                <h1>Cart</h1> 
                 <div class="breadcrumb">
                     <ul>
                         <li><a href="#">HOME</a></li>
@@ -38,18 +37,48 @@
 
     </div>
 </div><!-- Page Banner Section End -->
+ 
 
+@if($cartProducts->isEmpty()) 
+    <div class="page-section section pt-90 pb-50">
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-12 text-center"> 
+       <img src="{{ asset('assets/images/banner/cart-empty.jpg') }}" class="img-fluid"> 
+       </div>
+        <div class="col-12 text-center">
+        <div class="cart-summary">
+                            <div class="cart-summary-wrap" style="padding: 45px 50px; margin-bottom: 20px; background-color: #fff">
+          <div class="cart-summary-button"> 
+                <button class="Continue Shopping" style="background:#68cad4;"><a href="{{ url('/home')}}">Continue Shopping</a></button>
+             </div> 
+         </div>
+     </div>
+ </div>
+         </div>
+         </div>
+          </div>
+            
+
+@else
+ 
 <!-- Cart Page Start -->
 <div class="page-section section pt-90 pb-50">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <form action="#">				
+
+            <div class="col-8"> 
+                  @if(session('success_msg'))
+     <div class="alert alert-success">
+      {{ session('success_msg') }}
+    </div>
+    @endif
                     <!-- Cart Table -->
                     <div class="cart-table table-responsive mb-40">
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th>Sl.no</th>
                                     <th class="pro-thumbnail">Image</th>
                                     <th class="pro-title">Product</th>
                                     <th class="pro-price">Price</th>
@@ -58,134 +87,82 @@
                                     <th class="pro-remove">Remove</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody> 
+                                    <?php $i=1; $subTotal = 0; $total = 0; ?>
+                                @foreach($cartProducts as $cartProduct)
+                                       <!--  <?php print_r($cartProduct);  ?> -->
+                                 
                                 <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img src="{{ asset('assets/images/product/product-1.png') }}" alt="Product"></a></td>
-                                    <td class="pro-title"><a href="#">Zeon Zen 4 Pro</a><br><strong>Size: XL</strong>&nbsp;&nbsp;<strong>Color: </strong>Red</td>
-                                    <td class="pro-price"><span>$295.00</span></td>
-                                    <td class="pro-quantity"><div class="pro-qty"><input type="text" value="1"></div></td>
-                                    <td class="pro-subtotal"><span>$295.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                    <td><strong>{{ $i++ }}</strong></td>
+
+                                    <td class="pro-thumbnail"><a href="#"><a class="thumb-image" href="{{ url('products/productdetails/'.$cartProduct->id) }}"><img src="{{ asset('images/'.$cartProduct->options->image) }}" alt="Product"></a></td>
+                                    {!! Form::open(['url' => '/products/update-cart', 'method' =>'POST']) !!}
+                                {!! csrf_field() !!}
+                                    <td class="pro-title"><a href="#">{{ $cartProduct->name }}</a><br><strong>Size: {{ $cartProduct->options->size }}</strong>&nbsp;&nbsp;<strong>Color: </strong>{{ $cartProduct->options->color }}</td>
+
+                                    <td class="pro-price"><span><i class="fa fa-inr" aria-hidden="true"></i> {{ $cartProduct->price }}</span></td>
+
+                                    <td class="pro-quantity">
+                                
+                                 <div class="pro-qty"><input type="number" value="{{ $cartProduct->qty }}" min="1" name="qty"> 
+                                 </div><br>
+                                  <input type="hidden" value="{{ $cartProduct->rowId }}" name="rowId">
+                                <input class="pro-qty" style="    background: #68cad4;" type="submit" value="update">
+                                    </td>
+
+                                  {!! Form::close() !!}
+
+                                   <?php  $subtotal = $cartProduct->qty * $cartProduct->price;   ?>
+                                    <td class="pro-subtotal"><span><i class="fa fa-inr" aria-hidden="true"></i> {{ $subtotal }}</span></td>
+
+                                    <td class="pro-remove"><a href="{{ url('/products/delete-cart-product/'.$cartProduct->rowId) }}"><i class="fa fa-trash-o"></i></a></td>
                                 </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img src="{{ asset('assets/images/product/product-2.png') }}" alt="Product"></a></td>
-                                    <td class="pro-title"><a href="#">Aquet Drone D 420</a><br><strong>Size: XL</strong>&nbsp;&nbsp;<strong>Color: </strong>Blue</td>
-                                    <td class="pro-price"><span>$275.00</span></td>
-                                    <td class="pro-quantity"><div class="pro-qty"><input type="text" value="2"></div></td>
-                                    <td class="pro-subtotal"><span>$550.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img src="{{ asset('assets/images/product/product-3.png') }}" alt="Product"></a></td>
-                                    <td class="pro-title"><a href="#">Game Station X 22</a><br><strong>Size: XL</strong>&nbsp;&nbsp;<strong>Color: </strong>Red</td>
-                                    <td class="pro-price"><span>$295.00</span></td>
-                                    <td class="pro-quantity"><div class="pro-qty"><input type="text" value="1"></div></td>
-                                    <td class="pro-subtotal"><span>$295.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="pro-thumbnail"><a href="#"><img src="{{ asset('assets/images/product/product-4.png') }}" alt="Product"></a></td>
-                                    <td class="pro-title"><a href="#">Roxxe Headphone Z 75 </a>
-                                    <br><strong>Size: XL</strong>&nbsp;&nbsp;<strong>Color: </strong>Red</td>
-                                    <td class="pro-price"><span>$110.00</span></td>
-                                    <td class="pro-quantity"><div class="pro-qty"><input type="text" value="1"></div></td>
-                                    <td class="pro-subtotal"><span>$110.00</span></td>
-                                    <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                </tr>
+                                <?php  
+
+                                        $subTotal = $subTotal + $subtotal;
+
+                                        $deliveryFee = 50;
+
+                                         $total = $subTotal + $deliveryFee;
+
+                                ?>
+                                
+                    @endforeach
                             </tbody>
                         </table>
                     </div>
-                    
-                </form>	
-                    
-                <div class="row">
-
-                    <div class="col-lg-6 col-12 mb-15">
-                        <!-- Calculate Shipping -->
-                        <div class="calculate-shipping">
-                            <h4>Calculate Shipping</h4>
-                            <form action="#">
-                                <div class="row">
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <select class="nice-select">
-                                            <option>Bangladesh</option>
-                                            <option>China</option>
-                                            <option>country</option>
-                                            <option>India</option>
-                                            <option>Japan</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <select class="nice-select">
-                                            <option>Dhaka</option>
-                                            <option>Barisal</option>
-                                            <option>Khulna</option>
-                                            <option>Comilla</option>
-                                            <option>Chittagong</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <input type="text" placeholder="Postcode / Zip">
-                                    </div>
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <input type="submit" value="Estimate">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- Discount Coupon -->
-                        <div class="discount-coupon">
-                            <h4>Discount Coupon Code</h4>
-                            <form action="#">
-                                <div class="row">
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <input type="text" placeholder="Coupon Code">
-                                    </div>
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <input type="submit" value="Apply Code">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Cart Summary -->
-                    <div class="col-lg-6 col-12 mb-40 d-flex">
+                     
+                
+            </div> 
+             <div class="col-lg-4 col-4 mb-40 d-flex">
                         <div class="cart-summary">
                             <div class="cart-summary-wrap">
                                 <h4>Cart Summary</h4>
-                                <p>Sub Total <span>$1250.00</span></p>
-                                <p>Shipping Cost <span>$00.00</span></p>
-                                <h2>Grand Total <span>$1250.00</span></h2>
+                                <p>Sub Total <span><i class="fa fa-inr" aria-hidden="true"></i> {{ $subTotal }}</span></p>
+                                <p>Shipping Cost <span><i class="fa fa-inr" aria-hidden="true"></i> 50</span></p>
+                                <h2>Grand Total <span><i class="fa fa-inr" aria-hidden="true"></i> {{ $total }}</span></h2>
                             </div>
+                             @if (Auth::check())
+                              <input type="hidden" name="userid" value="{{Auth::user()->id}}">
+                              @endif
                             <div class="cart-summary-button">
-                                <button class="checkout-btn">Checkout</button>
-                                <button class="update-btn">Update Cart</button>
+                                  @if(Auth::check())
+                                <button class="checkout-btn"><a href="{{ route('checkout')}}">Checkout</button></button>
+                                    @else
+                                    <button class="checkout-btn"><a href="{{ route('home.login')}}">Checkout</button></button>
+                                    @endif
+                              <button class="checkout-btn"><a href="{{ url('/home')}}">Continue Shopping</a></button>
+                             
                             </div>
                         </div>
                     </div>
-
-                </div>
-                
-            </div>
+           
         </div>
     </div>
 </div>
 <!-- Cart Page End --> 
-
-<!-- Banner Section Start -->
-<div class="banner-section section mb-90">
-    <div class="container">
-        <div class="row">
-            
-            <!-- Banner -->
-            <div class="col-12">
-                <div class="banner"><a href="#"><img src="{{ asset('assets/images/banner/banner-10.jpg') }}" alt="Banner"></a></div>
-            </div>
-            
-        </div>
-    </div>
-</div><!-- Banner Section End -->
+@endif
+ 
 
 <!-- Brands Section Start -->
 <div class="brands-section section mb-90">
@@ -204,7 +181,7 @@
         </div>
     </div>
 </div><!-- Brands Section End -->
-
+  
 
 <!-- Footer Section Start -->
 @include('layouts.home.footer')
@@ -212,19 +189,4 @@
 
 <!-- JS
 ============================================ -->
-
-<!-- jQuery JS -->
-<script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
-<!-- Popper JS -->
-<script src="{{ asset('assets/js/popper.min.js') }}"></script>
-<!-- Bootstrap JS -->
-<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-<!-- Plugins JS -->
-<script src="{{ asset('assets/js/plugins.js') }}"></script>
-
-<!-- Main JS -->
-<script src="{{ asset('assets/js/main.js') }}"></script>
-
-</body>
-
-</html>
+@include('layouts.home.footer_script')

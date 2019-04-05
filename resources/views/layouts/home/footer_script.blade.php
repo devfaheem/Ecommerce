@@ -1,6 +1,7 @@
 <!-- JS
 ============================================ -->
 
+</script>
 <!-- jQuery JS -->
 <script src="{{ asset('assets/js/vendor/jquery-1.12.4.min.js') }}"></script>
 <!-- Popper JS -->

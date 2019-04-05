@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -11,9 +12,21 @@ class AdminController extends Controller
      *
      * @return Response
      */
-    public function index()
+
+    
+    public function index(Request $request)
     {
         //
+            if($request->isMethod('post')){
+                $data =$request->input();
+                if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password'],'admin'=>'1'])){
+                   return redirect()->route('admin.dashboard',compact($data));
+                }else{ 
+            return back()->withErrors([
+            'message'=> 'Please Check your Credentials and try again.']); 
+      
+                }
+            }
          return view('admin.login');
     }
 
