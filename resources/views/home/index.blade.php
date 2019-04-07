@@ -405,7 +405,7 @@
                         <!-- Product Start -->
                         <div class="ee-product">
 
-                            <!-- Image -->
+                            <!-- Image  -->
                             <div class="image">
 
                                 <span class="label new">new</span>

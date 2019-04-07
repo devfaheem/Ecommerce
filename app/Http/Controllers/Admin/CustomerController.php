@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 
 class CustomerController extends Controller
 {
@@ -15,6 +16,12 @@ class CustomerController extends Controller
     public function index()
     {
         //
+        if(Session::has('adminSession')){
+
+        }else{
+             return redirect('/admin')->withErrors([
+            'message'=> 'Please login to access.']);
+        }
 
         // $sections = config("proud_india.sections");
         // dd($sections);

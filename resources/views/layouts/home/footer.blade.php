@@ -124,7 +124,7 @@
             </div>
             
         </div>
-    </div><!-- Footer Bottom Section Start -->
+    </div><!-- Footer Top Section Start -->
    
     <!-- Footer Bottom Section Start -->
     <div class="footer-bottom-section section">

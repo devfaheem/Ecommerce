@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
  
 
 class DashboardController extends Controller
@@ -14,7 +15,15 @@ class DashboardController extends Controller
      */
     public function index()
     { 
+        if(Session::has('adminSession')){
+
+        }else{
+             return redirect('/admin')->withErrors([
+            'message'=> 'Please login to access.']);
+        }
+
          return view('admin.dashboard.dashboard');
+       
        
     }
 

@@ -35,8 +35,9 @@ Auth::routes();
 
 Route::match(['get','post'],'/admin', 'AdminController@index')->name('admin.login');
 
-Route::get('admin/logout', 'AdminController@logout');
+Route::match(['get','post'],'/admin/login', 'AdminController@index')->name('admin.login'); 
 
+Route::match(['get','post'],'/admin/logout', 'AdminController@logout')->name('admin.logout'); 
 
 Route::get('/admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
 

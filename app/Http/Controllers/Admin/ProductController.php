@@ -7,6 +7,7 @@ use App\ProductCategory;
 use App\Brand;
 use App\Product;
 use DB;
+use Session;
 
 class ProductController extends Controller
 {
@@ -17,6 +18,12 @@ class ProductController extends Controller
      */
     public function index()
     {
+        if(Session::has('adminSession')){
+
+        }else{
+             return redirect('/admin')->withErrors([
+            'message'=> 'Please login to access.']);
+        }
                 // $products = Product::all();
         $products = DB::table('products')->join('product_categories', 'product_categories.id', '=', 'products.productcategory_id')->join('brands', 'brands.id', '=', 'products.brand_id')->select('products.*','product_categories.name as productcategory','brands.name as brand')->get()->toArray();
         // echo "<pre>";

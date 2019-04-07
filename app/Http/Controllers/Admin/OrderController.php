@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 
 class OrderController extends Controller
 {
@@ -14,6 +15,12 @@ class OrderController extends Controller
     public function index()
     {
         //
+        if(Session::has('adminSession')){
+
+        }else{
+             return redirect('/admin')->withErrors([
+            'message'=> 'Please login to access.']);
+        }
          return view('admin.orders.index');
     }
 

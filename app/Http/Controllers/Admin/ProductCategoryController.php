@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProductCategory;
+use Session;
 
 class ProductCategoryController extends Controller
 {
@@ -15,6 +16,12 @@ class ProductCategoryController extends Controller
     public function index()
     {
         //
+        if(Session::has('adminSession')){
+
+        }else{
+             return redirect('/admin')->withErrors([
+            'message'=> 'Please login to access.']);
+        }
          $productcategory = ProductCategory::all();
         // echo "<pre>";
         // print_r($productcategory);

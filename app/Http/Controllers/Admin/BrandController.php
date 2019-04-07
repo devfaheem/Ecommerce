@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Brand;
+use Session;
 
 class BrandController extends Controller
 { 
@@ -15,6 +16,12 @@ class BrandController extends Controller
      public function index()
     {
         //
+        if(Session::has('adminSession')){
+
+        }else{
+             return redirect('/admin')->withErrors([
+            'message'=> 'Please login to access.']);
+        }
          $brand = Brand::all();
         // echo "<pre>";
         // print_r($brand);
